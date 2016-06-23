@@ -1,7 +1,7 @@
 {
   "name": "iftar",
-  "version": "1.0.1",
-  "description": "",
+  "version": "2.0.0",
+  "description": "İftar Vakti Cli Tool",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,12 +23,6 @@
     "name" : "Enes Erdogan",
     "email": "eneserdogan58@gmail.com"
   },
-  "contributors": [
-    {
-      "name": "Samet Aydemir",
-      "email": "sametaydemir@yandex.com"
-    }
-  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/eneserdogan/iftar/issues"
