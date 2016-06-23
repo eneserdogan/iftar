@@ -10,7 +10,7 @@ spin.setSpinnerString('|/-\\');
 spin.start();
 
 program
-  .version('1.0.1')
+  .version('2.0.1')
   .arguments('<city>')
   .action(function (city) {
 
