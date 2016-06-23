@@ -1,3 +1,5 @@
+'use strict';
+
 const request = require('request');
 const emoji   = require('node-emoji');
 const colors  = require('colors');
