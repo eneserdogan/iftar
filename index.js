@@ -14,7 +14,7 @@ program
   .arguments('<city>')
   .action(function (city) {
 
-    request('https://erdogan.pw/api/iftar/v1/?city=' + city, function(error, response, body) {
+    request('https://iftar.herokuapp.com/?city=' + city, function(error, response, body) {
         if (!error && response.statusCode == 200) {
             spin.stop(true);
 
