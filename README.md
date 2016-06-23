@@ -11,7 +11,7 @@
 
 # install
 
-```bash 
+```bash
 $ [sudo] npm install -g iftar
 ```
 
@@ -21,6 +21,24 @@ $ [sudo] npm install -g iftar
 $ iftar <city_name>
 ```
 
+# help
+
+```bash
+$ iftar --help
+
+Usage: iftar [options] <city>
+
+ Options:
+
+   -h, --help     output usage information
+   -V, --version  output the version number
+
+ Örnek Kullanım:
+
+   $ iftar istanbul
+   $ iftar ankara
+```
+
 # example
 
 ```bash
@@ -28,8 +46,7 @@ $ iftar istanbul
 
 $ ⏳ 20:47 İftara 3 saat 40 dakika kaldı
 ```
+# record
 <p align="center">
 <a href="https://asciinema.org/a/4kl96d4dq2ocfzoagust6oj7p" target="_blank"><img src="https://asciinema.org/a/4kl96d4dq2ocfzoagust6oj7p.png" width="600" /></a>
 </p>
-
-
