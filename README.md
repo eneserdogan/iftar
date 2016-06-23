@@ -1,5 +1,9 @@
-![alt
-text](pin-istanbul-city.png)
+
+<p>
+<a href="https://dribbble.com/shots/1961669-Pin-Istanbul-City">
+<img src="https://d13yacurqjgara.cloudfront.net/users/43340/screenshots/1961669/pin-istanbul-city.png" width="200">
+</a>
+</p>
 
 # iftar
 İftar saatini terminalden öğrenin !
@@ -50,5 +54,3 @@ $ ⏳ 20:47 İftara 3 saat 40 dakika kaldı
 <p align="center">
 <a href="https://asciinema.org/a/4kl96d4dq2ocfzoagust6oj7p" target="_blank"><img src="https://asciinema.org/a/4kl96d4dq2ocfzoagust6oj7p.png" width="600" /></a>
 </p>
-
-<a href="https://dribbble.com/shots/1961669-Pin-Istanbul-City">Logo Dribbble Link</a>
