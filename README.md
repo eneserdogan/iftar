@@ -8,10 +8,10 @@
 # iftar
 İftar saatini terminalden öğrenin !
 
-<img src="https://img.shields.io/npm/dt/iftar.svg?maxAge=2592000">
-<img src="https://img.shields.io/npm/v/iftar.svg?maxAge=2592000">
-<img src="https://img.shields.io/npm/l/iftar.svg?maxAge=2592000">
-<img src="https://img.shields.io/badge/cli-iftar-orange.svg?maxAge=2592000">
+<img src="https://img.shields.io/npm/dt/iftar.svg">
+<img src="https://img.shields.io/npm/v/iftar.svg">
+<img src="https://img.shields.io/npm/l/iftar.svg">
+<img src="https://img.shields.io/badge/cli-iftar-orange.svg">
 
 # install
 
