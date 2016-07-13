@@ -21,9 +21,9 @@ program
 
     if(todayDate < nextRamadan){
       spin.stop(true);
-      var daysleft = Math.floor((nextRamadan - todayDate) / (24 * 60 * 60 * 1000));
+      let daysleft = Math.floor((nextRamadan - todayDate) / (24 * 60 * 60 * 1000));
       console.log('');
-      console.log(emoji.get(':clock1030:') + "  Ramazan'a " + daysleft + " gün kaldı");
+      console.log(emoji.get(':clock1030:') + "  Ramazan'a " + daysleft + " gün kaldı.");
       console.log('');
     }else{
       request('https://iftar.herokuapp.com/?city=' + city, function(error, response, body) {
