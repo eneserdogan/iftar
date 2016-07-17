@@ -18,6 +18,11 @@
 ```bash
 $ [sudo] npm install -g iftar
 ```
+# update
+
+```bash
+$ [sudo] npm update -g iftar
+```
 
 # use
 

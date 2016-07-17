@@ -1,6 +1,6 @@
 {
   "name": "iftar",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "İftar Vakti Cli Tool",
   "main": "index.js",
   "scripts": {
