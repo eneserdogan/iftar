@@ -1,6 +1,6 @@
 {
     "name": "iftar",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "description": "Iftar Command Line Tools",
     "main": "index.js",
     "scripts": {
@@ -41,6 +41,7 @@
         "moment": "^2.18.1",
         "ora": "^1.1.0",
         "request": "^2.81.0",
+        "slugify": "^1.1.0",
         "timediff": "^1.1.1",
         "vorpal": "^1.11.4"
     },
