@@ -1,85 +1,45 @@
 'use strict';
 
-const request = require('request');
-const emoji   = require('node-emoji');
-const colors  = require('colors');
-const program = require('commander');
-const spinner = require('cli-spinner').Spinner;
-
-
-let spin = new spinner('%s Güncel veriler alınıyor.');
-spin.setSpinnerString('|/-\\');
-spin.start();
-
-program
-  .version('2.0.5')
-  .arguments('<city>')
-  .action(function (city) {
-
-    let nextRamadan = new Date(2017,5,27);
-    let todayDate   = new Date();
-
-    if(todayDate < nextRamadan){
-      spin.stop(true);
-      let daysleft = Math.floor((nextRamadan - todayDate) / (24 * 60 * 60 * 1000));
-      console.log('');
-      console.log(emoji.get(':clock1030:') + "  Ramazan'a " + daysleft + " gün kaldı.");
-      console.log('');
-    }else{
-      request('https://iftar.herokuapp.com/?city=' + city, function(error, response, body) {
-          if (!error && response.statusCode == 200) {
-              spin.stop(true);
-
-              // Parse
-              let jsonParse   = JSON.parse(body),
-              stringHour;
-
-              // Date to second
-              let hoursToSecond      = new Date().getHours() * 3600;
-              let minuteToSecond     = new Date().getMinutes() * 60;
-              let totalSecond        = hoursToSecond + minuteToSecond;
-
-              // Json date to second
-              let jsonDate            = jsonParse.aksam.split(':');
-
-              let jsonHourToSecond    = jsonDate[0] * 3600;
-              let jsonMinuteToSecond  = jsonDate[1] * 60;
-              let jsonTotalSecond     = jsonHourToSecond + jsonMinuteToSecond;
-
-
-              let timeDiffToMinute = (jsonTotalSecond - totalSecond) / 60;
-
-
-              let n       = Number(timeDiffToMinute);
-              let Hours   = Math.floor(n % 3600 / 60);
-              let Minutes = Math.floor(n % 3600 % 60);
-
-              if(Hours > 0 || Minutes > 0){
-                stringHour = 'İftara '+((Hours > 0 ? colors.cyan.underline(Hours) + ' saat ' : '') + (Minutes > 0 ? colors.cyan.underline(Minutes) + ' dakika ' : '') + 'kaldı');
-              }else{
-                stringHour = 'İftar vakti geçti';
-              }
-
-              console.log('');
-              console.log(emoji.get(':hourglass_flowing_sand:') + '   ' + jsonParse.aksam + ' ' + stringHour);
-              console.log('');
-          } else {
-              spin.stop(true);
-              console.log('');
-              console.error('Sunucu yanıt vermiyor');
-              console.log('');
-          }
-      })
-    }
-  });
-
-
-program.on('--help', function(){
-    console.log('  Örnek Kullanım:');
-    console.log('');
-    console.log('    $ iftar istanbul');
-    console.log('    $ iftar ankara');
-    console.log('');
+const Vorpal   = require('vorpal')();
+const Slugify  = require('slugify');
+const Request  = require('request');
+const Moment   = require('moment');
+const TimeDiff = require('timediff');
+const Ora      = require('ora');
+const Spinner  = new Ora({
+    text: 'Hesaplanıyor',
+    color: 'yellow'
 });
+let City = ["Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Amasya", "Ankara", "Antalya", "Artvin", "Aydın", "Balıkesir", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa", "Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Edirne", "Elazığ", "Erzincan", "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkari", "Hatay", "Isparta", "Mersin", "İstanbul", "İzmir", "Kars", "Kastamonu", "Kayseri", "Kırıkkale", "Kırşehir", "Koceali", "Konya", "Kütahya", "Malatya", "Manisa", "Kahramanmaraş", "Mardin", "Muğla", "Muş", "Nevşehir", "Niğde", "Ordu", "Rize", "Sakarya", "Samsun", "Siirt", "Sinop", "Sivas", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Şanlıurfa", "Uşak", "Van", "Yozgat", "Zonguldak", "Aksaray", "Bayburt", "Karaman", "Kırıkkale", "Batman", "Şırnak", "Bartın", "Ardahan", "Iğdır", "Yalova", "Karabük", "Kilis", "Osmaniye", "Düzce"];
 
-program.parse(process.argv);
+Vorpal
+    .command('iftar <city>')
+    .validate(function(args) {
+        return (City.indexOf(args.city) === -1 ? (Spinner.fail([`Geçersiz parametre: <city> => ${args.city}`]), false) : true)
+    })
+    .autocomplete(City)
+    .action(function(args, callback) {
+        Spinner.start();
+        let ExistRamadan = '2017-06-24';
+        let NextRamadan  = '2018-05-16';
+        if(Moment().format('YYYY-MM-DD') <= ExistRamadan ){
+            let PostURL = `http://www.namazvaktim.net/json/gunluk/${Slugify(args.city.toLowerCase())}.json`;
+            Request(PostURL, function(error, response, body) {
+                if (!error && response.statusCode === 200) {
+                    let PrayerTimes = JSON.parse(body);
+                    let RemainingTime = TimeDiff(Moment().format('YYYY-MM-DD HH:mm:ss'), Moment().format(`YYYY-MM-DD ${PrayerTimes.namazvakitleri.zaman.vakitler.aksam}:00`));
+                    return (RemainingTime.hours > 0 || RemainingTime.minutes > 0 ?  Spinner.succeed([`İftar'a ${RemainingTime.hours} saat ${RemainingTime.minutes} dakika kaldı`]) : Spinner.fail([`Bir günü daha yedin, iyisin tabi.`]) )
+                } else {
+                    Spinner.fail([`Bir şeyler ters gitti, tekrar dener misin ?`]);
+                }
+            });
+            callback();
+        }else{
+            let NextYear = TimeDiff(Moment().format('YYYY-MM-DD'),NextRamadan);
+            Spinner.succeed([`Bir sonraki Ramazan ayı ${NextYear.months} ay ${NextYear.weeks} hafta ${NextYear.days} gün sonra başlıyor. `]);
+        }
+    });
+
+Vorpal
+    .delimiter('iftar$:')
+    .show();

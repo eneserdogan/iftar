@@ -1,38 +1,51 @@
 {
-  "name": "iftar",
-  "version": "2.0.5",
-  "description": "İftar Vakti Cli Tool",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "iftar",
-    "cli",
-    "tools"
-  ],
-  "bin": {
-    "iftar": "./bin/iftar.js"
-  },
-  "preferGlobal": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/eneserdogan/iftar.git"
-  },
-  "author": {
-    "name" : "Enes Erdogan",
-    "email": "eneserdogan58@gmail.com"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/eneserdogan/iftar/issues"
-  },
-  "homepage": "https://github.com/eneserdogan/iftar/issues",
-  "dependencies": {
-    "cli-spinner": "^0.2.5",
-    "colors": "^1.1.2",
-    "commander": "^2.9.0",
-    "node-emoji": "^1.3.0",
-    "request": "^2.72.0"
-  }
+    "name": "iftar",
+    "version": "2.1.0",
+    "description": "Iftar Command Line Tools",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha"
+    },
+    "bin": {
+        "trino": "./bin/iftar.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://eneserdogan@github.com/eneserdogan/iftar.git"
+    },
+    "keywords": [
+        "iftar",
+        "prayer",
+        "times",
+        "tool",
+        "vorpal",
+        "cli",
+        "ora",
+        "spinner",
+        "shell",
+        "command",
+        "api",
+        "ramadan"
+    ],
+    "author": {
+        "name": "Enes Erdogan",
+        "email": "enes@erdogan.com",
+        "github": "https://github.com/eneserdogan"
+    },
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/eneserdogan/iftar/issues"
+    },
+    "homepage": "https://github.com/eneserdogan/iftar#readme",
+    "dependencies": {
+        "moment": "^2.18.1",
+        "ora": "^1.1.0",
+        "request": "^2.81.0",
+        "timediff": "^1.1.1",
+        "vorpal": "^1.11.4"
+    },
+    "devDependencies": {
+        "chai": "^3.5.0",
+        "mocha": "^3.2.0"
+    }
 }
