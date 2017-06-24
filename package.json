@@ -1,13 +1,13 @@
 {
     "name": "iftar",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "description": "Iftar Command Line Tools",
     "main": "index.js",
     "scripts": {
         "test": "mocha"
     },
     "bin": {
-        "trino": "./bin/iftar.js"
+        "iftar": "./bin/iftar.js"
     },
     "repository": {
         "type": "git",
