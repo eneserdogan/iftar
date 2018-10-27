@@ -30,10 +30,7 @@ pool.connect((err,db)=>{
             if(err){
                 console.log(err);
             }else{
-                for(var i = 0 ; i < table.rows.length ; i++){ var args1 = args.city;
-                    var args2 = args.slice(1).toString().toLowerCase();
-                    args1 = args1[0].toLocaleUpperCase() + args2;
-                    console.log(args1);
+                for(var i = 0 ; i < table.rows.length ; i++){
                     City.push(table.rows[i].city_name);
                 }
             }
