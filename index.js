@@ -42,10 +42,7 @@ pool.connect((err,db)=>{
     }
 })
 
-var ahmet = 'ahmet';
-var x =  ahmet.slice(1).toString().toLowerCase();
 
-ahmet = ahmet[0].toLocaleUpperCase() + x;
 
 Vorpal
     .command('iftar <city>')
