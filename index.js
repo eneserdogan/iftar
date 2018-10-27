@@ -9,14 +9,47 @@ const Spinner = new Ora({
     text: 'Hesaplanıyor',
     color: 'yellow'
 });
-let City = ["Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Amasya", "Ankara", "Antalya", "Artvin", "Aydın", "Balıkesir", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa", "Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Edirne", "Elazığ", "Erzincan", "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkari", "Hatay", "Isparta", "Mersin", "İstanbul", "İzmir", "Kars", "Kastamonu", "Kayseri", "Kırıkkale", "Kırşehir", "Koceali", "Konya", "Kütahya", "Malatya", "Manisa", "Kahramanmaraş", "Mardin", "Muğla", "Muş", "Nevşehir", "Niğde", "Ordu", "Rize", "Sakarya", "Samsun", "Siirt", "Sinop", "Sivas", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Şanlıurfa", "Uşak", "Van", "Yozgat", "Zonguldak", "Aksaray", "Bayburt", "Karaman", "Kırıkkale", "Batman", "Şırnak", "Bartın", "Ardahan", "Iğdır", "Yalova", "Karabük", "Kilis", "Osmaniye", "Düzce"];
+
+const pg = require('pg');
+const dbConfig = {
+    host : 'localhost',
+    port : 5432,
+    database : 'iftar',
+    username : 'fatih',
+    password : 'test'
+};
+const pool = pg.Pool(dbConfig);
+
+var City = [];
+
+pool.connect((err,db)=>{
+    if(err){
+        console.log(err);
+    }else{
+        db.query('SELECT * FROM iftar',(err,table)=>{
+            if(err){
+                console.log(err);
+            }else{
+                for(var i = 0 ; i < table.rows.length ; i++){
+                    City.push(table.rows[i].city_name);
+                }
+            }
+        })
+        
+    }
+})
+
+
 
 Vorpal
     .command('iftar <city>')
     .validate(function(args) {
-        return (City.indexOf(args.city) === -1 ? (Spinner.fail([`Geçersiz parametre: <city> => ${args.city}`]), false) : true)
+        
+        return (
+            
+            City.indexOf(args.city) === -1 ? (Spinner.fail([`Geçersiz parametre: <city> => ${args.city}`]), false) : true)
     })
-    .autocomplete(City)
+    .autocomplete(City)     
     .action(function(args, callback) {
         Spinner.start();
         let ExistRamadan = '2017-06-24';

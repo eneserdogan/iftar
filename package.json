@@ -4,49 +4,53 @@
     "description": "Iftar Command Line Tools",
     "main": "index.js",
     "scripts": {
-        "test": "mocha"
+      "test": "mocha"
     },
     "bin": {
-        "iftar": "./bin/iftar.js"
+      "iftar": "./bin/iftar.js"
     },
     "repository": {
-        "type": "git",
-        "url": "https://eneserdogan@github.com/eneserdogan/iftar.git"
+      "type": "git",
+      "url": "https://eneserdogan@github.com/eneserdogan/iftar.git"
     },
     "keywords": [
-        "iftar",
-        "prayer",
-        "times",
-        "tool",
-        "vorpal",
-        "cli",
-        "ora",
-        "spinner",
-        "shell",
-        "command",
-        "api",
-        "ramadan"
+      "iftar",
+      "prayer",
+      "times",
+      "tool",
+      "vorpal",
+      "cli",
+      "ora",
+      "spinner",
+      "shell",
+      "command",
+      "api",
+      "ramadan"
     ],
     "author": {
-        "name": "Enes Erdogan",
-        "email": "enes@erdogan.com",
-        "github": "https://github.com/eneserdogan"
+      "name": "Enes Erdogan",
+      "email": "enes@erdogan.com",
+      "github": "https://github.com/eneserdogan"
     },
     "license": "GPL-3.0",
     "bugs": {
-        "url": "https://github.com/eneserdogan/iftar/issues"
+      "url": "https://github.com/eneserdogan/iftar/issues"
     },
     "homepage": "https://github.com/eneserdogan/iftar#readme",
     "dependencies": {
-        "moment": "^2.18.1",
-        "ora": "^1.1.0",
-        "request": "^2.81.0",
-        "slugify": "^1.1.0",
-        "timediff": "^1.1.1",
-        "vorpal": "^1.11.4"
+      "body-parser": "^1.18.3",
+      "chai": "^3.5.0",
+      "moment": "^2.18.1",
+      "ora": "^1.1.0",
+      "pg": "^7.6.0",
+      "request": "^2.81.0",
+      "slugify": "^1.1.0",
+      "timediff": "^1.1.1",
+      "vorpal": "^1.11.4"
     },
     "devDependencies": {
-        "chai": "^3.5.0",
-        "mocha": "^3.2.0"
+      "chai": "^3.5.0",
+      "mocha": "^3.2.0"
     }
-}
+  }
+  
