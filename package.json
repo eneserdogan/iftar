@@ -1,52 +1,62 @@
 {
-    "name": "iftar",
-    "version": "2.1.2",
-    "description": "Iftar Command Line Tools",
-    "main": "index.js",
-    "scripts": {
-        "test": "mocha"
-    },
-    "bin": {
-        "iftar": "./bin/iftar.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://eneserdogan@github.com/eneserdogan/iftar.git"
-    },
-    "keywords": [
-        "iftar",
-        "prayer",
-        "times",
-        "tool",
-        "vorpal",
-        "cli",
-        "ora",
-        "spinner",
-        "shell",
-        "command",
-        "api",
-        "ramadan"
-    ],
-    "author": {
-        "name": "Enes Erdogan",
-        "email": "enes@erdogan.com",
-        "github": "https://github.com/eneserdogan"
-    },
-    "license": "GPL-3.0",
-    "bugs": {
-        "url": "https://github.com/eneserdogan/iftar/issues"
-    },
-    "homepage": "https://github.com/eneserdogan/iftar#readme",
-    "dependencies": {
-        "moment": "^2.18.1",
-        "ora": "^1.1.0",
-        "request": "^2.81.0",
-        "slugify": "^1.1.0",
-        "timediff": "^1.1.1",
-        "vorpal": "^1.11.4"
-    },
-    "devDependencies": {
-        "chai": "^3.5.0",
-        "mocha": "^3.2.0"
-    }
+  "name": "iftar",
+  "version": "3.0.0",
+  "description": "Iftar Command Line Tools",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "iftar": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [
+    "iftar",
+    "prayer",
+    "times",
+    "tool",
+    "vorpal",
+    "cli",
+    "ora",
+    "spinner",
+    "shell",
+    "command",
+    "api",
+    "ramadan",
+    "iftar",
+    "namaz",
+    "ramazan",
+    "prayer",
+    "islamic",
+    "cli",
+    "turkey"
+  ],
+  "author": {
+    "name": "Enes Erdogan",
+    "email": "enes@erdogan.com",
+    "github": "https://github.com/eneserdogan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eneserdogan/iftar.git"
+  },
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/eneserdogan/iftar/issues"
+  },
+  "homepage": "https://github.com/eneserdogan/iftar#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.5",
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "dayjs": "^1.11.19",
+    "dotenv": "^16.3.1",
+    "inquirer": "^9.2.12",
+    "inquirer-autocomplete-prompt": "^3.0.1",
+    "ora": "^7.0.1"
+  }
 }
